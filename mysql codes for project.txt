@@ -1,0 +1,7 @@
+create database tupperware;
+use tupperware;
+create table member(mid int,name varchar(40), mobno bigint, address varchar(60),city varchar(25),dob date,primary key(mid,name));
+
+create table product(pid int primary key,pname varchar(50),category enum('food preservation','food preparation','bottle','tiffin','serving'), size varchar(8),mrp float(9,2) not null,qtyavailable int);
+
+create table sales(ordercode int primary key,mid int,name varchar(40),pid int,pname varchar(50),size varchar(10),qty int,price float(9,2),total float(9,2),sellingdate date,foreign key(mid,name) references member(mid,name) on update cascade); 
